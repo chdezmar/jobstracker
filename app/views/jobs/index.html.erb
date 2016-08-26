@@ -5,9 +5,18 @@
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-2.2.3/dt-1.10.12/datatables.min.js"></script>
 
 <script>
-$(document).on( "turbolinks:load", function () {
-  $('#table_id').DataTable();
-} );
+
+var table_id = null;
+document.addEventListener("turbolinks:load", function() {
+    table_id = $("#table_id").DataTable();
+});
+
+document.addEventListener("turbolinks:before-cache", function() {
+  if ($("#table_id_wrapper").length === 1) {
+    table_id.destroy();
+  }
+});
+
 
 </script>
 
