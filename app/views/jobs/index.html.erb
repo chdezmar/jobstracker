@@ -1,0 +1,28 @@
+<a href='/jobs/new'>Add a job</a>
+
+<table id="table_id" class="display">
+  <thead>
+      <tr>
+          <th>Job position</th>
+          <th>Company</th>
+          <th>URL</th>
+          <th>Rating</th>
+          <th>Status</th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <% if @jobs.any? %>
+      <% @jobs.each do |job| %>
+          <td><%= link_to job.position, job_path(job) %></td>
+          <td><%= job.company%></td>
+          <td><a href="<%=job.url%>">visit</td>
+          <td><%= job.rating%></td>
+          <td><%= job.status%></td>
+        </tr>
+      <% end %>
+    <% else %>
+      No jobs yet
+    <% end %>
+  </tbody>
+  </table>
