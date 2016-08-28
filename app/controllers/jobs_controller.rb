@@ -35,7 +35,7 @@ end
 
 
   def jobs_params
-   params.require(:job).permit(:url, :position, :company, :rating, :status, :current_user)
+   params.require(:job).permit(:url, :position, :company, :rating, :status, :location, :current_user)
  end
 
 end

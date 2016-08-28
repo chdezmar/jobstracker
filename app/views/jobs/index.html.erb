@@ -10,12 +10,13 @@ var table_id = null;
 document.addEventListener("turbolinks:load", function() {
     table_id = $("#table_id").DataTable({
         "createdRow": function ( row, data, index ) {
-            if ( data[4] === 'yes' ) {
-                $('td', row).eq(4).addClass('yes');
-            } else if (data[4] === 'out') {
-                $('td', row).eq(4).addClass('out');
+            if ( data[5] === 'yes' ) {
+                $('td', row).eq(5).addClass('yes');
+            } else if (data[5] === 'out') {
+                $('td', row).eq(5).addClass('out');
             }
-        }
+        },
+        "bDestroy": true
     } );
 });
 
@@ -36,6 +37,7 @@ document.addEventListener("turbolinks:before-cache", function() {
           <th>Job position</th>
           <th>Company</th>
           <th>URL</th>
+          <th>Location</th>
           <th>Rating</th>
           <th>Status</th>
       </tr>
@@ -47,6 +49,7 @@ document.addEventListener("turbolinks:before-cache", function() {
           <td><%= link_to job.position, job_path(job) %></td>
           <td><%= job.company%></td>
           <td><a href="<%=job.url%>">visit</td>
+          <td><%= job.location%></td>
           <td><%= job.rating%></td>
           <td><%= job.status%></td>
         </tr>
