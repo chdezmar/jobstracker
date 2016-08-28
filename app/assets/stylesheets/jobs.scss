@@ -599,3 +599,13 @@ table.dataTable td {
         }
     }
 }
+
+td.yes {
+        font-weight: bold;
+        background-color: green;
+}
+
+td.out {
+        font-weight: bold;
+        background-color: red;
+    }
