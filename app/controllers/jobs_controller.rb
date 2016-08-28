@@ -9,8 +9,13 @@ class JobsController < ApplicationController
   end
 
   def create
-    Job.create(jobs_params)
-    redirect_to '/jobs'
+    @job = Job.new(jobs_params)
+		@job.user_id = current_user.id
+		if @job.save
+			redirect_to '/jobs'
+		else
+			render 'new'
+		end
   end
 
   def show
@@ -30,7 +35,7 @@ end
 
 
   def jobs_params
-   params.require(:job).permit(:url, :position, :company, :rating, :status)
+   params.require(:job).permit(:url, :position, :company, :rating, :status, :current_user)
  end
 
 end
