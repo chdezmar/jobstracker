@@ -1,19 +1,34 @@
 
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-2.2.3/dt-1.10.12/datatables.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.0/css/responsive.dataTables.min.css"/>
+
 
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-2.2.3/dt-1.10.12/datatables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
 
 <script>
 
 var table_id = null;
 document.addEventListener("turbolinks:load", function() {
     table_id = $("#table_id").DataTable({
+      responsive: {
+          details: {
+              type: 'column',
+              target: 'tr'
+          }
+      },
+      columnDefs: [ {
+          className: 'control',
+          orderable: false,
+          targets: 0
+      } ],
+      order: [ 1, 'asc' ],
         "createdRow": function ( row, data, index ) {
-            if ( data[5] === 'yes' ) {
-                $('td', row).eq(5).addClass('yes');
-            } else if (data[5] === 'out') {
-                $('td', row).eq(5).addClass('out');
+            if ( data[6] === 'yes' ) {
+                $('td', row).eq(6).addClass('yes');
+            } else if (data[6] === 'out') {
+                $('td', row).eq(6).addClass('out');
             }
         },
         "bDestroy": true,
@@ -32,27 +47,31 @@ document.addEventListener("turbolinks:before-cache", function() {
 
 <a href='/jobs/new'>Add a job</a>
 
-<table id="table_id" class="display">
+<table id="table_id" class="display nowrap">
   <thead>
       <tr>
+          <th></th>
           <th>Job position</th>
           <th>Company</th>
           <th>URL</th>
           <th>Location</th>
           <th>Rating</th>
           <th>Status</th>
+          <th class="none">More information</th>
       </tr>
   </thead>
   <tbody>
     <tr>
     <% if @jobs.any? %>
       <% @jobs.each do |job| %>
+          <td></td>
           <td><%= link_to job.position, job_path(job) %></td>
           <td><%= job.company%></td>
           <td><a href="<%=job.url%>">visit</td>
           <td><%= job.location%></td>
           <td><%= job.rating%></td>
           <td><%= job.status%></td>
+          <td class="none"><%= 'comments'%></td>
         </tr>
       <% end %>
     <% else %>
