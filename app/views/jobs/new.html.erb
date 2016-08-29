@@ -11,6 +11,8 @@
   <%= f.text_field :rating %>
   <%= f.label :status %>
   <%= f.text_field :status %>
+  <%= f.label :more_info %>
+  <%= f.text_field :info %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit 'Add Job' %>
 <% end %>

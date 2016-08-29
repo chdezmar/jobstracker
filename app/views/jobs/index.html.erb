@@ -71,7 +71,7 @@ document.addEventListener("turbolinks:before-cache", function() {
           <td><%= job.location%></td>
           <td><%= job.rating%></td>
           <td><%= job.status%></td>
-          <td class="none"><%= 'comments'%></td>
+          <td class="none"><%= job.info %></td>
         </tr>
       <% end %>
     <% else %>
