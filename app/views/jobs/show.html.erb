@@ -1,3 +1,4 @@
 <p><%= @job.position %> </p>
 
 <%= link_to "Edit #{@job.position}", edit_job_path(@job) %>
+<%= link_to "Delete", job_path(@job), method: :delete %>

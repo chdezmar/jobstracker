@@ -62,6 +62,7 @@ feature 'jobs' do
       sign_up_user
       add_job(position: 'position')
     end
+
     scenario 'can edit a job' do
       visit '/jobs'
       click_link 'position'
@@ -72,5 +73,21 @@ feature 'jobs' do
       expect(current_path).to eq "/jobs/#{Job.first.id}"
     end
   end
+
+  context 'deleting jobs' do
+
+    before do
+      sign_up_user
+      add_job(position: 'Frontend dev')
+    end
+      scenario 'can remove a job' do
+        visit '/jobs'
+        click_link 'Frontend dev'
+        click_link 'Delete'
+        expect(current_path).to eq "/jobs"
+        expect(page).not_to have_content 'Frontend dev'
+        expect(page).to have_content 'Job deleted successfully'
+      end
+    end
 
 end
