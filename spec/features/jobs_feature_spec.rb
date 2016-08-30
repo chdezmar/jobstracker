@@ -5,13 +5,15 @@ feature 'jobs' do
     scenario 'should display a prompt to add a job' do
       visit '/jobs'
       expect(page).to have_content 'No jobs yet'
+      sign_up_user
       expect(page).to have_link 'Add a job'
     end
   end
 
   context 'jobs have been added' do
     before do
-      Job.create(position: 'junior developer')
+      sign_up_user
+      add_job(position: 'junior developer')
     end
 
     scenario 'display jobs' do
@@ -23,6 +25,7 @@ feature 'jobs' do
 
   context 'adding jobs' do
     scenario 'prompts user to fill out a form, then displays the new job' do
+      sign_up_user
       visit '/jobs'
       click_link 'Add a job'
       fill_in 'Url', with: 'http://companyname.com'
@@ -41,28 +44,32 @@ feature 'jobs' do
 
   context 'viewing jobs' do
 
-    let!(:job){ Job.create(position:'position') }
-
+    before do
+      sign_up_user
+      add_job(position: 'junior developer')
+    end
     scenario 'lets a user view a job' do
-     visit '/jobs'
-     click_link 'position'
-     expect(page).to have_content 'position'
-     expect(current_path).to eq "/jobs/#{job.id}"
+      visit '/jobs'
+      click_link 'position'
+      expect(page).to have_content 'position'
+      expect(current_path).to eq "/jobs/#{Job.first.id}"
     end
   end
 
   context 'editing jobs' do
 
-    let!(:job) { Job.create position: 'position', url: 'http://google.com' }
-
+    before do
+      sign_up_user
+      add_job(position: 'position')
+    end
     scenario 'can edit a job' do
-     visit '/jobs'
-     click_link 'position'
-     click_link 'Edit'
-     fill_in 'Position', with: 'junior position'
-     click_button 'Update Job'
-     expect(page).to have_content 'junior position'
-     expect(current_path).to eq "/jobs/#{job.id}"
+      visit '/jobs'
+      click_link 'position'
+      click_link 'Edit'
+      fill_in 'Position', with: 'junior position'
+      click_button 'Update Job'
+      expect(page).to have_content 'junior position'
+      expect(current_path).to eq "/jobs/#{Job.first.id}"
     end
   end
 
