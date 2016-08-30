@@ -61,6 +61,7 @@ document.addEventListener("turbolinks:before-cache", function() {
   </thead>
   <tbody>
     <tr>
+    <% if current_user %>
     <% if @jobs.any? %>
       <% @jobs.each do |job| %>
           <td></td>
@@ -72,6 +73,7 @@ document.addEventListener("turbolinks:before-cache", function() {
           <td><%= job.status%></td>
           <td class="none"><%= job.info %></td>
         </tr>
+      <% end %>
       <% end %>
     <% else %>
       No jobs yet

@@ -48,11 +48,18 @@ feature 'jobs' do
       sign_up_user
       add_job(position: 'junior developer')
     end
-    scenario 'lets a user view a job' do
+
+    scenario 'lets a user view its own jobs' do
       visit '/jobs'
       click_link 'position'
       expect(page).to have_content 'position'
       expect(current_path).to eq "/jobs/#{Job.first.id}"
+    end
+
+    scenario 'does not let a user view other users jobs' do
+      click_link 'Sign out'
+      sign_up_user('different@user.com')
+      expect(page).not_to have_content 'junior developer'
     end
   end
 

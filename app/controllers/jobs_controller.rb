@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
 
   def index
-    @jobs = Job.all
+    @jobs = Job.where(user_id: current_user.id) unless current_user.blank?    
   end
 
   def new

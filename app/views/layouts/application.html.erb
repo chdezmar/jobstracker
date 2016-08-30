@@ -10,7 +10,7 @@
 
   <body>
     <% if user_signed_in? %>
-      <a href='/jobs/new'>Add a job</a>
+      <%= link_to 'Add a job', new_job_path%>
       <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to 'Sign in', new_user_session_path %>
