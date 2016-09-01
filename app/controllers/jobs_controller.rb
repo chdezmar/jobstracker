@@ -1,7 +1,9 @@
 class JobsController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index]
+
   def index
-    @jobs = Job.where(user_id: current_user.id) unless current_user.blank?    
+    @jobs = Job.where(user_id: current_user.id) unless current_user.blank?
   end
 
   def new
