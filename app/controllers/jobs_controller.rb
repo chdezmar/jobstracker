@@ -26,21 +26,20 @@ class JobsController < ApplicationController
 
   def edit
    @job = Job.find(params[:id])
- end
+  end
 
- def update
-  @job = Job.find(params[:id])
-  @job.update(jobs_params)
-  redirect_to "/jobs/#{@job.id}"
-end
+  def update
+    @job = Job.find(params[:id])
+    @job.update(jobs_params)
+    redirect_to "/jobs/#{@job.id}"
+  end
 
-def destroy
-  @job = Job.find(params[:id])
-  @job.destroy
-  flash[:notice] = 'Job deleted successfully'
-  redirect_to '/jobs'
-end
-
+  def destroy
+    @job = Job.find(params[:id])
+    @job.destroy
+    flash[:notice] = 'Job deleted successfully'
+    redirect_to '/jobs'
+  end
 
   def jobs_params
    params.require(:job).permit(:url, :position, :company, :rating, :status, :location, :info, :current_user)
