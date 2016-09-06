@@ -1,12 +1,3 @@
-
-
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs-3.3.6/dt-1.10.12/r-2.1.0/datatables.min.css"/>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.0/css/responsive.dataTables.min.css"/>
-
-
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.6/dt-1.10.12/r-2.1.0/datatables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
-
 <script>
 
 var table_id = null;
@@ -23,6 +14,7 @@ document.addEventListener("turbolinks:load", function() {
           orderable: false,
           targets: 0
       } ],
+      deferRender: true,
       order: [ 1, 'asc' ],
         "createdRow": function ( row, data, index ) {
             if ( data[6] === 'yes' ) {

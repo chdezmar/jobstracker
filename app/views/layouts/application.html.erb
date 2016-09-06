@@ -9,15 +9,28 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-dark bg-inverse">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Jobs Tracker</a>
+      </div>
+    <div class="nav navbar-nav navbar-right">
     <% if user_signed_in? %>
-      <%= link_to 'Add a job', new_job_path%>
-      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Add a job', new_job_path%></li>
+        <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
     <% else %>
-      <%= link_to 'Sign in', new_user_session_path %>
-      <%= link_to 'Sign up', new_user_registration_path %>
-      <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+        <li><%= link_to 'Sign in', new_user_session_path %></li>
+        <li><%= link_to 'Sign up', new_user_registration_path %></li>
+      </ul>
+    <% end %>
+    </div>
+    </nav>
+    <% if notice %>
+    <div><%= notice %></div>
+    <% end %>
+    <% if alert %>
+    <div><%= alert %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
