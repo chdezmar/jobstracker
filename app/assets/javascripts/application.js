@@ -11,8 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require datatables.min
-//= require dataTables.responsive.min
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
