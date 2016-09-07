@@ -1,7 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple Rails app to help organizing a job search. No more excel spreadsheets.
 
 Things you may want to cover:
 
