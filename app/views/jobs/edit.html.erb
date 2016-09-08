@@ -1,18 +1,42 @@
-<%= form_for @job do |f| %>
-  <%= f.label :url %>
-  <%= f.text_field :url %>
-  <%= f.label :position %>
-  <%= f.text_field :position %>
-  <%= f.label :company %>
-  <%= f.text_field :company %>
-  <%= f.label :location %>
-  <%= f.text_field :location %>
-  <%= f.label :rating %>
-  <%= f.text_field :rating %>
-  <%= f.label :status %>
-  <%= f.text_field :status %>
-  <%= f.label :more_info %>
-  <%= f.text_field :info %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.submit %>
-<% end %>
+
+<div class="jumbotron col-md-4 col-md-offset-4">
+  <div class"col-sm-2 control-label">
+    <%= form_for @job do |f| %>
+      <div class="field">
+        <%= f.label :url, class: "col-sm-3 control-label"  %>
+        <%= f.url_field :url, class: "col-sm-6", required: true %><br>
+      </div>
+
+      <div class="field">
+        <%= f.label :position, class: "col-sm-3 control-label" %>
+        <%= f.text_field :position, class: "col-sm-6" %><br>
+      </div>
+
+      <div class="field">
+        <%= f.label :company, class: "col-sm-3 control-label"  %>
+        <%= f.text_field :company, class: "col-sm-6" %><br>
+      </div>
+
+      <div class="field">
+        <%= f.label :location, class: "col-sm-3 control-label"  %>
+        <%= f.text_field :location, class: "col-sm-6" %><br>
+      </div>
+
+      <div class="field">
+        <%= f.label :rating, class: "col-sm-3 control-label"  %>
+        <%= f.text_field :rating, class: "col-sm-6" %><br>
+      </div>
+
+      <div class="field">
+        <%= f.label :status, class: "col-sm-3 control-label"  %>
+        <%= f.text_field :status, class: "col-sm-6" %><br>
+      </div>
+
+      <div class="field">
+        <%= f.label :more_info, class: "col-sm-3 control-label"  %>
+        <%= f.text_field :info, class: "col-sm-6" %><br>
+      </div>
+      <%= f.hidden_field :user_id, value: current_user.id %><br>
+      <%= f.submit 'Update Job', class: "col-md-4"%>
+    <% end %>
+  </div>
