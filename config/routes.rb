@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root to: 'jobs#index'
+
+  authenticated do
+   root :to => 'jobs#index', as: :authenticated
+  end
+
+  root to: 'jobs#homepage'
 
   resources "jobs"
 

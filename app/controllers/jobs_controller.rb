@@ -1,8 +1,13 @@
 class JobsController < ApplicationController
 
-  before_action :authenticate_user!, :except => [:index]
+  before_action :authenticate_user!, :except => [:homepage]
+
+  def homepage
+    render 'homepage'
+  end
 
   def index
+    @index = true
     @jobs = Job.where(user_id: current_user.id) unless current_user.blank?
   end
 
