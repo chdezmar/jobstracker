@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark bg-inverse">
   <div class="navbar-header">
-    <%= link_to('Jobs Tracker', root_path, class: "navbar-brand", 'data-no-turbolink' => true) %>
+    <%= link_to('Jobs Tracker', root_path, class: "navbar-brand", data: { turbolinks: false }) %>
   </div>
 <div class="nav navbar-nav navbar-right">
 <% if user_signed_in? %>
