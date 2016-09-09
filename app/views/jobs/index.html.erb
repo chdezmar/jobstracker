@@ -24,10 +24,12 @@ document.addEventListener("turbolinks:load", function() {
       deferRender: true,
       order: [ 1, 'asc' ],
         "createdRow": function ( row, data, index ) {
-            if ( data[6] === 'yes' ) {
-                $('td', row).eq(6).addClass('yes');
-            } else if (data[6] === 'out') {
-                $('td', row).eq(6).addClass('out');
+            if ( data[6] === 'Applied' ) {
+                $('td', row).eq(6).addClass('applied');
+            } else if (data[6] === 'Interview') {
+                $('td', row).eq(6).addClass('interview');
+            } else if (data[6] === 'Rejected') {
+                $('td', row).eq(6).addClass('rejected');
             }
         },
         "bDestroy": true,
@@ -74,9 +76,9 @@ document.addEventListener("turbolinks:before-cache", function() {
           <td class="none"><%= job.info %></td>
         </tr>
       <% end %>
-      <% end %>
     <% else %>
       No jobs yet
+    <% end %>
     <% end %>
   </tbody>
   </table>

@@ -15,15 +15,15 @@ def sign_up_user(email = 'test@gmail.com', password = '12345678', password_confi
 end
 
 
-def add_job( position='position', url='http://url.com', company='company', location='location', rating='0', status='status', info='info')
+def add_job( position='position', url='http://url.com', company='company', location='location', rating='3', status='Applied', info='info')
   visit '/jobs'
   click_link 'Add a job'
   fill_in 'Url', with: url
   fill_in 'Position', with: position
   fill_in 'Company', with: company
   fill_in 'Location', with: location
-  fill_in 'Rating', with: rating
-  fill_in 'Status', with: status
-  fill_in 'job_info', with: info
+  select rating, from: 'Rating'
+  select status, from: 'Status'
+  fill_in 'info', with: info
   click_button 'Add Job'
 end

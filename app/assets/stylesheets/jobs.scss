@@ -1,12 +1,17 @@
-td.yes {
+td.applied {
         font-weight: bold;
         background-color: green;
 }
 
-td.out {
+td.rejected {
         font-weight: bold;
         background-color: red;
-    }
+}
+
+td.interview {
+        font-weight: bold;
+        background-color: yellow;
+}
 
 
 .background {

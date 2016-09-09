@@ -3,9 +3,8 @@ require 'rails_helper'
 feature 'jobs' do
   context 'no jobs added' do
     scenario 'should display a prompt to add a job' do
-      visit '/jobs'
-      expect(page).to have_content 'No jobs yet'
       sign_up_user
+      expect(page).to have_content 'No jobs yet'
       expect(page).to have_link 'Add a job'
     end
   end
@@ -31,13 +30,13 @@ feature 'jobs' do
       fill_in 'Url', with: 'http://companyname.com'
       fill_in 'Position', with: 'Junior developer'
       fill_in 'Company', with: 'Company'
-      fill_in 'Rating', with: '5'
-      fill_in 'Status', with: 'no'
+      select 5, from: 'Rating'
+      select 'Applied', from: 'Status'
       click_button 'Add Job'
       expect(page).to have_content 'Junior developer'
       expect(page).to have_content 'Company'
       expect(page).to have_content '5'
-      expect(page).to have_content 'no'
+      expect(page).to have_content 'Applied'
       expect(current_path).to eq '/jobs'
     end
   end
