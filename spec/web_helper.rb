@@ -24,6 +24,6 @@ def add_job( position='position', url='http://url.com', company='company', locat
   fill_in 'Location', with: location
   select rating, from: 'Rating'
   select status, from: 'Status'
-  fill_in 'info', with: info
+  fill_in 'More info', with: info
   click_button 'Add Job'
 end
