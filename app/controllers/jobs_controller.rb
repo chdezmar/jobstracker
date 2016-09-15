@@ -1,6 +1,8 @@
 class JobsController < ApplicationController
 
   before_action :authenticate_user!, :except => [:homepage]
+  protect_from_forgery except: :create
+
 
   def homepage
     render 'homepage'
