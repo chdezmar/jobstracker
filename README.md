@@ -1,23 +1,33 @@
-# README
+# Jobs Tracker
 
-A simple Rails app to help organizing a job search. No more excel spreadsheets.
+A simple Rails app to help organizing a job search, so you can get rid of excel spreadsheets.
 
-Things you may want to cover:
+- [Main rails app](https://github.com/chdezmar/jobstracker)
+- [Chrome extension](https://github.com/chdezmar/jobstracker_chrome_ext)
 
-* Ruby version
+# Tech used
+  - Ruby on Rails
+  - [DataTables](https://datatables.net/)
+  - PostgreSQL
+  - Rspec
+  - Capybara
+  - Chrome extension (Javascript and AJAX)
 
-* System dependencies
+# Set up
 
-* Configuration
+Clone this repo locally.
 
-* Database creation
+```
+$ bundle install
+$ bin/rails db:create
+$ bin/rails db:migrate
+$ bin/rails db:migrate RAILS_ENV=test
+$ bin/rails s
+$ http://localhost:3000
+```
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Tests
+```
+$ rspec
+```
